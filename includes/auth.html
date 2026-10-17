@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#07090e">
+    <title>Masuk / Daftar - Bank Sampah Digital</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styling/style.css">
+</head>
+<body class="page-auth">
+
+    <main class="container py-4 py-md-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+
+                <!-- Logo -->
+                <div class="text-center mb-4">
+                    <div class="d-inline-flex align-items-center justify-content-center p-3 rounded-4 bg-success bg-opacity-10 border border-success border-opacity-25 mb-3 shadow-sm" style="width: 85px; height: 85px;">
+                        <img src="../styling/logo.png" alt="Logo Bank Sampah" class="img-fluid" style="max-height: 55px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+                    </div>
+                    <h3 class="fw-bold text-white mb-1">Bank Sampah Digital</h3>
+                    <p class="text-subtle-light small">Kelola sampah jadi berkah dan bernilai ekonomi</p>
+                </div>
+
+                <!-- Kartu form -->
+                <div class="card-custom balance-card">
+
+                    <ul class="nav nav-pills nav-fill mb-4" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active py-2 font-sm" id="login-tab" data-bs-toggle="tab"
+                                    data-bs-target="#loginContent" type="button" role="tab"
+                                    aria-controls="loginContent" aria-selected="true">Masuk</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link py-2 font-sm" id="register-tab" data-bs-toggle="tab"
+                                    data-bs-target="#registerContent" type="button" role="tab"
+                                    aria-controls="registerContent" aria-selected="false">Daftar akun</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <!-- ========== MASUK ========== -->
+                        <div class="tab-pane fade show active" id="loginContent" role="tabpanel" aria-labelledby="login-tab" tabindex="0">
+                            <div class="mb-4">
+                                <h2 class="auth-heading">Selamat datang kembali</h2>
+                                <p class="text-subtle-light font-sm m-0">Masuk untuk melihat saldo dan mengelola setoran.</p>
+                            </div>
+
+                            <form id="formLogin" novalidate>
+                                <div class="mb-3">
+                                    <label for="loginId" class="form-label field-label">Nomor telepon atau email</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text custom-icon-input"><i class="bi bi-person"></i></span>
+                                        <input type="text" id="loginId" class="form-control" placeholder="0812xxxxxxxx"
+                                               autocomplete="username" required>
+                                        <div class="invalid-feedback">Isi nomor telepon atau email Anda.</div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <label for="loginPass" class="form-label field-label">Kata sandi</label>
+                                        <button type="button" class="link-accent font-xs" id="forgotPass">Lupa kata sandi?</button>
+                                    </div>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text custom-icon-input"><i class="bi bi-lock"></i></span>
+                                        <input type="password" id="loginPass" class="form-control" placeholder="Kata sandi Anda"
+                                               autocomplete="current-password" minlength="6" required>
+                                        <button type="button" class="pw-toggle" data-toggle-pass="#loginPass" aria-label="Tampilkan kata sandi">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                        <div class="invalid-feedback">Kata sandi minimal 6 karakter.</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="ingatPerangkat">
+                                    <label class="form-check-label font-sm text-subtle-light" for="ingatPerangkat">Ingat perangkat ini</label>
+                                </div>
+
+                                <button type="submit" class="btn btn-success w-100 py-3">Masuk</button>
+                            </form>
+
+                            <div class="divider my-4"><span>atau</span></div>
+
+                            <button type="button" class="btn btn-outline-light w-100 py-2 d-flex align-items-center justify-content-center gap-2 font-sm"
+                                    id="btnGoogle">
+                                <i class="bi bi-google"></i> Masuk dengan Google
+                            </button>
+
+                            <p class="text-center font-sm text-subtle-light mt-4 mb-0">
+                                Belum punya akun?
+                                <button type="button" class="link-accent" data-switch-tab="#register-tab">Daftar sekarang</button>
+                            </p>
+                        </div>
+
+                        <!-- ========== DAFTAR ========== -->
+                        <div class="tab-pane fade" id="registerContent" role="tabpanel" aria-labelledby="register-tab" tabindex="0">
+                            <div class="mb-4">
+                                <h2 class="auth-heading">Buat akun baru</h2>
+                                <p class="text-subtle-light font-sm m-0">Daftar sebagai nasabah dan mulai menabung sampah.</p>
+                            </div>
+
+                            <form id="formRegister" novalidate>
+                                <div class="mb-3">
+                                    <label for="regNama" class="form-label field-label">Nama lengkap</label>
+                                    <input type="text" id="regNama" class="form-control" placeholder="Nama sesuai identitas"
+                                           autocomplete="name" required>
+                                    <div class="invalid-feedback">Nama lengkap wajib diisi.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="regTelp" class="form-label field-label">Nomor telepon (WhatsApp)</label>
+                                    <input type="tel" id="regTelp" class="form-control" placeholder="0812xxxxxxxx"
+                                           inputmode="tel" autocomplete="tel"
+                                           pattern="^(\+62|62|0)8[0-9]{8,12}$" required>
+                                    <div class="invalid-feedback">Gunakan nomor seluler Indonesia, contoh 081234567890.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="regEmail" class="form-label field-label">Email</label>
+                                    <input type="email" id="regEmail" class="form-control" placeholder="nama@email.com"
+                                           autocomplete="email" required>
+                                    <div class="invalid-feedback">Masukkan alamat email yang valid.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="regPass" class="form-label field-label">Kata sandi</label>
+                                    <div class="input-group has-validation">
+                                        <input type="password" id="regPass" class="form-control" placeholder="Minimal 6 karakter"
+                                               autocomplete="new-password" minlength="6" required>
+                                        <button type="button" class="pw-toggle" data-toggle-pass="#regPass" aria-label="Tampilkan kata sandi">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                        <div class="invalid-feedback">Kata sandi minimal 6 karakter.</div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="regPass2" class="form-label field-label">Ulangi kata sandi</label>
+                                    <input type="password" id="regPass2" class="form-control" placeholder="Ketik ulang kata sandi"
+                                           autocomplete="new-password" required>
+                                    <div class="invalid-feedback">Kata sandi tidak sama.</div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="regAlamat" class="form-label field-label">Alamat lengkap</label>
+                                    <textarea id="regAlamat" class="form-control" rows="2"
+                                              placeholder="Nama jalan, nomor rumah, RT/RW" autocomplete="street-address" required></textarea>
+                                    <div class="invalid-feedback">Alamat dipakai petugas untuk menjemput sampah.</div>
+                                </div>
+
+                                <button type="submit" class="btn btn-success w-100 py-3">Daftar sebagai nasabah</button>
+                            </form>
+
+                            <p class="text-center font-sm text-subtle-light mt-4 mb-0">
+                                Sudah punya akun?
+                                <button type="button" class="link-accent" data-switch-tab="#login-tab">Masuk di sini</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="index.html" class="text-subtle-light text-decoration-none small d-inline-flex align-items-center gap-1">
+                        <i class="bi bi-arrow-left"></i> Kembali ke dashboard
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../styling/script.js"></script>
+</body>
+</html>

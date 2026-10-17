@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#07090e">
+    <title>Setoran - Admin Bank Sampah Digital</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styling/style.css">
+    <link rel="stylesheet" href="../styleadmin/admin.css">
+</head>
+<body class="admin-body" data-page="setoran">
+
+    <a href="#konten" class="visually-hidden-focusable skip-link">Lewati ke konten utama</a>
+
+    <div class="admin-app">
+
+        <!-- ============ SIDEBAR ============ -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand d-none d-lg-block">
+                <a class="brand" href="admin-dashboard.html">
+                    <span class="brand-mark">
+                        <img src="logo.png" alt="" width="24" height="24"
+                             onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'bi bi-recycle'}))">
+                    </span>
+                    <span class="brand-text"><strong>BSD Admin</strong><small>Portal pengelola</small></span>
+                </a>
+            </div>
+
+            <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="adminSidebar" aria-label="Menu admin">
+                <div class="offcanvas-header">
+                    <a class="brand" href="admin-dashboard.html">
+                    <span class="brand-mark">
+                        <img src="logo.png" alt="" width="24" height="24"
+                             onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'bi bi-recycle'}))">
+                    </span>
+                    <span class="brand-text"><strong>BSD Admin</strong><small>Portal pengelola</small></span>
+                    </a>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#adminSidebar" aria-label="Tutup menu"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <nav class="sidebar-nav" aria-label="Navigasi admin">
+                        <a class="sidebar-link" data-nav="dashboard" href="admin-dashboard.html"><i class="bi bi-speedometer2"></i>Dashboard</a>
+                        <a class="sidebar-link" data-nav="nasabah" href="admin-nasabah.html"><i class="bi bi-people"></i>Data nasabah</a>
+                        <a class="sidebar-link" data-nav="jenis" href="admin-nasabah.html#jenis-sampah"><i class="bi bi-tags"></i>Jenis sampah</a>
+                        <a class="sidebar-link" data-nav="setoran" href="admin-setoran.html"><i class="bi bi-cash-stack"></i>Setoran &amp; transaksi</a>
+                        <a class="sidebar-link" data-nav="penjemputan" href="admin-penjemputan.html"><i class="bi bi-truck"></i>Kelola penjemputan</a>
+                        <a class="sidebar-link" data-nav="laporan" href="admin-dashboard.html#laporan"><i class="bi bi-bar-chart-line"></i>Laporan</a>
+                    </nav>
+
+                    <div class="sidebar-foot">
+                        <div class="sidebar-user">
+                            <span class="avatar-circle" aria-hidden="true">SA</span>
+                            <div><strong>Super Admin</strong><small>ID: ADS-9921</small></div>
+                        </div>
+                        <div class="sidebar-links">
+                            <a href="../index.html"><i class="bi bi-person"></i>Sisi nasabah</a>
+                            <a href="../includes/auth.html"><i class="bi bi-box-arrow-right"></i>Keluar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ============ AREA UTAMA ============ -->
+        <div class="admin-main">
+
+            <header class="admin-topbar">
+                <button class="icon-btn topbar-toggle d-lg-none" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#adminSidebar" aria-controls="adminSidebar" aria-label="Buka menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+
+                <h1 class="admin-title">Pencatatan setoran &amp; riwayat transaksi</h1>
+
+                <form class="admin-search" action="admin-nasabah.html" method="get" role="search">
+                    <i class="bi bi-search" aria-hidden="true"></i>
+                    <input type="search" name="q" class="form-control" placeholder="Cari data, laporan, nasabah..." aria-label="Cari nasabah">
+                </form>
+
+                <div class="dropdown topbar-bell">
+                    <button class="icon-btn position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notifikasi">
+                        <i class="bi bi-bell"></i>
+                        <span class="notif-dot" id="adminNotifDot" aria-hidden="true"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end notif-menu p-0">
+                        <div class="px-3 py-3 border-bottom-line"><strong class="small">Notifikasi</strong></div>
+                        <div id="adminNotifBody"></div>
+                    </div>
+                </div>
+
+                <div class="dropdown topbar-user">
+                    <button class="user-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="user-name d-none d-md-inline">Administrator</span>
+                        <span class="avatar-circle" aria-hidden="true">AD</span>
+                        <i class="bi bi-chevron-down d-none d-md-inline small text-subtle-light"></i>
+                        <span class="visually-hidden d-md-none">Menu Administrator</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="index.html"><i class="bi bi-person me-2"></i>Lihat sisi nasabah</a></li>
+                        <li><button class="dropdown-item" type="button" id="resetDemo"><i class="bi bi-arrow-counterclockwise me-2"></i>Reset data demo</button></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="auth.html"><i class="bi bi-box-arrow-right me-2"></i>Keluar</a></li>
+                    </ul>
+                </div>
+            </header>
+
+            <main id="konten" class="admin-content">
+
+                <div class="setoran-grid">
+
+                    <form class="card-custom" id="formSetoranAdmin" novalidate aria-labelledby="ttlSetoranBaru">
+                        <h2 class="card-title" id="ttlSetoranBaru"><i class="bi bi-plus-circle"></i>Pencatatan setoran baru</h2>
+
+                        <div class="mb-4">
+                            <label for="pilihNasabah" class="form-label field-label">Pilih nasabah</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text custom-icon-input"><i class="bi bi-search"></i></span>
+                                <input type="text" id="pilihNasabah" class="form-control" list="nasabahList"
+                                       placeholder="Ketik ID atau nama nasabah..." autocomplete="off" required>
+                                <div class="invalid-feedback">Pilih nasabah dari daftar yang tersedia.</div>
+                            </div>
+                            <datalist id="nasabahList"></datalist>
+                            <div class="form-text field-hint" id="nasabahInfo">Ketik ID atau nama, lalu pilih dari daftar.</div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="field-label m-0">Detail sampah yang disetor</span>
+                            <button type="button" class="link-accent font-xs" id="addRow"><i class="bi bi-plus-lg me-1"></i>Tambah jenis</button>
+                        </div>
+                        <div class="trx-rows" id="trxRows"></div>
+
+                        <dl class="trx-total">
+                            <div><dt>Total berat kotor</dt><dd id="totBerat">0,0 Kg</dd></div>
+                            <div><dt>Total kredit saldo</dt><dd id="totKredit" class="text-accent">Rp 0</dd></div>
+                        </dl>
+
+                        <button type="submit" class="btn btn-success w-100 py-3">Konfirmasi &amp; simpan setoran</button>
+                    </form>
+
+                    <section class="card-custom" aria-labelledby="ttlRiwayatTrx">
+                        <div class="card-head">
+                            <h2 class="card-title" id="ttlRiwayatTrx"><i class="bi bi-clock-history"></i>Riwayat transaksi masuk</h2>
+                            <div class="card-tools">
+                                <input type="date" id="filterTgl" class="form-control form-control-sm" aria-label="Filter tanggal">
+                                <select id="filterStatus" class="form-select form-select-sm" aria-label="Filter status">
+                                    <option value="">Semua status</option>
+                                    <option>Selesai</option>
+                                    <option>Dibatalkan</option>
+                                </select>
+                                <button type="button" class="link-accent font-xs" id="filterReset" hidden>Reset filter</button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table data-table wide">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID transaksi</th>
+                                        <th scope="col">Tanggal</th>
+                                        <th scope="col">Nasabah</th>
+                                        <th scope="col" class="text-end">Berat (Kg)</th>
+                                        <th scope="col" class="text-end">Total nilai</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col" class="text-end">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="trxBody"></tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+       <script src="../styling/script.js"></script>
+    <script src="../styleadmin/admin.js"></script>
+</body>
+</html>

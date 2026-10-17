@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#07090e">
+    <title>Tukar Poin - Bank Sampah Digital</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styling/style.css">
+</head>
+<body>
+
+    <a href="#konten" class="visually-hidden-focusable skip-link">Lewati ke konten utama</a>
+
+    <header class="app-navbar sticky-top">
+        <div class="container-xxl d-flex align-items-center justify-content-between gap-3 py-3">
+            <a class="brand d-flex align-items-center gap-2 text-decoration-none" href="index.html">
+                <span class="brand-mark">
+                    <img src="../styling/logo.png" alt="" width="24" height="24"
+                         onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'bi bi-recycle'}))">
+                </span>
+                <span class="brand-name">Bank Sampah Digital</span>
+            </a>
+            <a href="index.html" class="btn btn-outline-light btn-sm px-3">
+                <i class="bi bi-arrow-left me-1"></i><span class="d-none d-sm-inline">Kembali ke </span>dashboard
+            </a>
+        </div>
+    </header>
+
+    <main id="konten" class="container-xxl py-4 py-lg-5">
+
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-3 mb-4">
+            <div>
+                <h1 class="page-title">Tukar poin</h1>
+                <p class="text-subtle-light m-0">Pilih hadiah dari poin hasil setoran sampah Anda.</p>
+            </div>
+            <div class="poin-chip" aria-live="polite">
+                <i class="bi bi-stars"></i>
+                <div>
+                    <small>Poin Anda</small>
+                    <strong><span data-poin>2.450</span> poin</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 g-lg-4">
+
+            <div class="col-12 col-sm-6 col-xl-4">
+                <article class="card-custom reward-card" data-cost="500">
+                    <div class="reward-icon"><i class="bi bi-flower1"></i></div>
+                    <h2 class="reward-name">Bibit tanaman hias</h2>
+                    <p class="reward-desc">Satu pot bibit siap tanam dari mitra pembibitan lokal.</p>
+                    <div class="reward-foot">
+                        <div><span class="reward-cost">500</span> <small>poin</small><div class="reward-need"></div></div>
+                        <button type="button" class="btn btn-success btn-sm px-3" onclick="tukarPoin(500, 'Bibit tanaman hias')">Tukar</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-4">
+                <article class="card-custom reward-card" data-cost="800">
+                    <div class="reward-icon"><i class="bi bi-cart3"></i></div>
+                    <h2 class="reward-name">Voucher belanja Rp 25.000</h2>
+                    <p class="reward-desc">Berlaku di minimarket mitra di seluruh Jabodetabek.</p>
+                    <div class="reward-foot">
+                        <div><span class="reward-cost">800</span> <small>poin</small><div class="reward-need"></div></div>
+                        <button type="button" class="btn btn-success btn-sm px-3" onclick="tukarPoin(800, 'Voucher belanja Rp 25.000')">Tukar</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-4">
+                <article class="card-custom reward-card" data-cost="1000">
+                    <div class="reward-icon"><i class="bi bi-phone"></i></div>
+                    <h2 class="reward-name">Pulsa Rp 50.000</h2>
+                    <p class="reward-desc">Dikirim ke nomor telepon yang terdaftar di akun Anda.</p>
+                    <div class="reward-foot">
+                        <div><span class="reward-cost">1.000</span> <small>poin</small><div class="reward-need"></div></div>
+                        <button type="button" class="btn btn-success btn-sm px-3" onclick="tukarPoin(1000, 'Pulsa Rp 50.000')">Tukar</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-4">
+                <article class="card-custom reward-card" data-cost="1200">
+                    <div class="reward-icon"><i class="bi bi-cup-hot"></i></div>
+                    <h2 class="reward-name">Tumbler stainless</h2>
+                    <p class="reward-desc">Tumbler 500 ml pengganti botol plastik sekali pakai.</p>
+                    <div class="reward-foot">
+                        <div><span class="reward-cost">1.200</span> <small>poin</small><div class="reward-need"></div></div>
+                        <button type="button" class="btn btn-success btn-sm px-3" onclick="tukarPoin(1200, 'Tumbler stainless')">Tukar</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-4">
+                <article class="card-custom reward-card" data-cost="1500">
+                    <div class="reward-icon"><i class="bi bi-lightning-charge"></i></div>
+                    <h2 class="reward-name">Token listrik Rp 100.000</h2>
+                    <p class="reward-desc">Kode token dikirim lewat WhatsApp setelah penukaran diproses.</p>
+                    <div class="reward-foot">
+                        <div><span class="reward-cost">1.500</span> <small>poin</small><div class="reward-need"></div></div>
+                        <button type="button" class="btn btn-success btn-sm px-3" onclick="tukarPoin(1500, 'Token listrik Rp 100.000')">Tukar</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-4">
+                <article class="card-custom reward-card" data-cost="2000">
+                    <div class="reward-icon"><i class="bi bi-basket"></i></div>
+                    <h2 class="reward-name">Paket sembako</h2>
+                    <p class="reward-desc">Beras, minyak, dan gula. Diantar bersama jadwal penjemputan berikutnya.</p>
+                    <div class="reward-foot">
+                        <div><span class="reward-cost">2.000</span> <small>poin</small><div class="reward-need"></div></div>
+                        <button type="button" class="btn btn-success btn-sm px-3" onclick="tukarPoin(2000, 'Paket sembako')">Tukar</button>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../styling/script.js"></script>
+</body>
+</html> 

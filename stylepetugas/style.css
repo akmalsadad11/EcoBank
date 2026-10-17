@@ -1,0 +1,269 @@
+/* =========================================================
+   STYLE PETUGAS LAPANGAN - DARK THEME & NAVBAR DASHBOARD (petugas.css)
+   ========================================================= */
+
+:root {
+    --bg-dark: #080c14;
+    --bg-surface: #101726;
+    --border-app: rgba(255, 255, 255, 0.08);
+    --border-app-strong: rgba(255, 255, 255, 0.18);
+    --text-primary: #f8fafc;
+    --text-slate-300: #cbd5e1;
+    --text-slate-400: #94a3b8;
+    --text-slate-500: #64748b;
+    --accent-emerald: #22c55e;
+    --accent-emerald-hover: #16a34a;
+    --accent-emerald-glow: rgba(34, 197, 94, 0.2);
+}
+
+body.bg-app-dark {
+    background-color: var(--bg-dark);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+.max-w-7xl {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Helper Utilities */
+.font-xs { font-size: 0.75rem; }
+.font-sm { font-size: 0.875rem; }
+.font-md { font-size: 1rem; }
+.font-lg { font-size: 1.25rem; }
+.fw-extrabold { font-weight: 800; }
+.text-emerald { color: var(--accent-emerald) !important; }
+.bg-emerald { background-color: var(--accent-emerald) !important; }
+.bg-emerald-subtle { background-color: rgba(34, 197, 94, 0.12) !important; }
+.border-emerald { border-color: var(--accent-emerald) !important; }
+
+.btn-xs {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+}
+
+/* Base Surfaces & Cards */
+.bg-app-surface { background-color: var(--bg-surface); }
+.bg-app-dark { background-color: var(--bg-dark); }
+.border-app { border-color: var(--border-app) !important; }
+
+.card-app {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-app);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Online Live Indicator Dot Animation */
+.status-online-pill {
+    background: rgba(15, 23, 42, 0.6);
+}
+
+.pulse-dot {
+    width: 7px;
+    height: 7px;
+    background-color: var(--accent-emerald);
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulseAnimation 1.8s infinite;
+}
+
+@keyframes pulseAnimation {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+/* Navigation Links */
+.navbar .nav-link {
+    transition: all 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* User Avatar */
+.avatar-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #1e293b;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-app-strong);
+}
+
+/* Interactive Task Card */
+.task-card {
+    background-color: #151d2f;
+    border: 1px solid var(--border-app);
+    border-radius: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-card:hover {
+    border-color: var(--border-app-strong);
+    background-color: #1a243a;
+    transform: translateY(-2px);
+}
+
+.task-card.active {
+    border: 1.5px solid var(--accent-emerald) !important;
+    background-color: rgba(34, 197, 94, 0.07);
+    box-shadow: 0 4px 20px var(--accent-emerald-glow);
+}
+
+/* Nav Pills Filter Tabs */
+#taskTabs .nav-link {
+    color: var(--text-slate-400);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+#taskTabs .nav-link.active {
+    background-color: #1e293b;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Map Box Visual Pattern */
+.map-placeholder-box {
+    background-color: #0c111c;
+    border: 1px dashed var(--border-app-strong);
+    min-height: 120px;
+}
+
+.map-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image: radial-gradient(#ffffff 1px, transparent 1px);
+    background-size: 12px 12px;
+}
+
+/* Workflow Progress Stepper */
+.status-stepper-group {
+    background-color: #0c111c;
+    border: 1px solid var(--border-app);
+}
+
+.btn-status-step {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--text-slate-400);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 8px 6px;
+    border-radius: 6px !important;
+    transition: all 0.2s ease;
+}
+
+.btn-status-step:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-status-step.active {
+    background-color: #1e293b;
+    color: var(--accent-emerald);
+    font-weight: 700;
+    border: 1px solid var(--border-app-strong);
+}
+
+/* Photo Dropzone Zone */
+.photo-upload-zone {
+    background-color: #0c111c;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.photo-upload-zone:hover {
+    border-color: var(--accent-emerald) !important;
+}
+
+.max-h-120 {
+    max-height: 120px;
+    object-fit: cover;
+}
+
+/* Custom Emerald Buttons & Inputs */
+.btn-emerald {
+    background-color: var(--accent-emerald);
+    color: #000000;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-emerald:hover {
+    background-color: var(--accent-emerald-hover);
+    color: #ffffff;
+    box-shadow: 0 4px 12px var(--accent-emerald-glow);
+}
+
+.btn-outline-emerald {
+    border: 1px solid var(--accent-emerald);
+    color: var(--accent-emerald);
+    background: transparent;
+}
+
+.btn-outline-emerald:hover {
+    background: var(--accent-emerald);
+    color: #000000;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #0c111c !important;
+    color: #ffffff !important;
+    border-color: var(--accent-emerald) !important;
+    box-shadow: 0 0 0 0.25rem var(--accent-emerald-glow) !important;
+}
+
+/* Task Scrollable Wrapper */
+.task-list-wrapper {
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
+    padding-right: 2px;
+}
+
+.task-list-wrapper::-webkit-scrollbar {
+    width: 4px;
+}
+
+.task-list-wrapper::-webkit-scrollbar-thumb {
+    background: var(--border-app-strong);
+    border-radius: 4px;
+}
+
+/* Responsive Customization */
+@media (max-width: 991.98px) {
+    .task-list-wrapper {
+        max-height: none;
+    }
+    .btn-status-step {
+        font-size: 0.68rem;
+        padding: 6px 2px;
+    }
+}
